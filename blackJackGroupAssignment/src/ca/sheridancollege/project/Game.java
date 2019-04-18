@@ -18,11 +18,19 @@ public class Game
 	//private final String gameName;//the title of the game
     private ArrayList<Player> players = new ArrayList<Player>(); // the players of the game
     static Scanner input = new Scanner(System.in);
-    public Game()
+    private static Game myInstance = null;
+    
+    private Game()
     {
         //gameName = givenName;
         players = new ArrayList();
     }
+    public static Game createGame() {
+		if (myInstance == null) {
+			myInstance = new Game();
+		}
+		return myInstance;
+	}
 
 
     public ArrayList <Player> getPlayers() 
