@@ -15,6 +15,31 @@ public class BlackJackGame {
 		{
 			
 			curentGame.play();
+
+			//Player
+			Player player = new Player("DangItRonPaul");
+			
+
+			//Dealer
+			Player dealer = new Player("Mr.Singleton");
+			
+
+
+			//condition to ask if card value goes above 21 at the end of the game
+			if (cards >=21)
+			{
+				System.out.println("Do you want to draw another card?");
+				String draw = in.nextLine();
+
+				if(draw.equalsIgnoreCase("yes"))
+				{
+					Card drawCard = new Card();
+				}
+
+
+			}
+
+
 		}
 		else
 		{

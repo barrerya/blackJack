@@ -54,4 +54,9 @@ public class GroupOfCards
         size = givenSize;
     }
     
+    public void addCard() {
+    	size++;
+    	this.cards.add(new Card());
+    }
+    
 }//end class

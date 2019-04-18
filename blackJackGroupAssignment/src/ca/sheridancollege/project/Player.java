@@ -12,11 +12,13 @@ package ca.sheridancollege.project;
 public class Player 
 {
 	 public static String playerID; //the unique ID for this player
+	    GroupOfCards hand;
+	    int handValue;
 	    
-
 	    public Player(String name)
 	    {
 	        playerID= name;
+	        hand = new GroupOfCards(2);
 	    }
 	    
 
@@ -30,11 +32,28 @@ public class Player
 	    {
 	        playerID = givenID;
 	    }
+	    
+	    
 
-	    public void hit()
+	    public GroupOfCards getHand() {
+			return hand;
+		}
+
+
+		public void setHand(GroupOfCards hand) {
+			this.hand = hand;
+		}
+		
+		
+
+
+		public void hit()
 	    {
+	    	hand.addCard();
+	    	
 	        //option to receive another card from the card class
 	    	
 	    }
+		
     
 }
