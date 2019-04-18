@@ -5,15 +5,18 @@
  */
 package ca.sheridancollege.project;
 
+import java.util.ArrayList;
+
 /**
  * A class that models each Player in the game. Players have an identifier, which should be unique.
  * @author dancye, 2018
  */
 public class Player 
 {
-	 public static String playerID; //the unique ID for this player
+	    public String playerID; //the unique ID for this player
 	    private GroupOfCards hand;
 	    private int handValue;
+	    private String cards;
 	    
 	    public Player(String name)
 	    {
@@ -35,9 +38,15 @@ public class Player
 	    
 	    
 
-	    public GroupOfCards getHand() {
-			return hand;
+	    public String getHand()
+		{
+			cards = hand.getHandString();
+			return cards;
 		}
+	    public ArrayList<Card> showCards()
+	    {
+	    	return hand.showCards();
+	    }
 
 
 		public void setHand(GroupOfCards hand) {

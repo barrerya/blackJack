@@ -20,8 +20,8 @@ public class Card {
 
 	// assigns random suit and value
 	public Card() {
-		int intVal = (int) Math.random() * 13 + 1;
-		int suitVal = (int) Math.random() * 4 + 1;
+		int intVal = (int) (Math.random() * 13 + 1);
+		int suitVal = (int) (Math.random() * 4 + 1);
 
 		// sets the suit for the card
 		if (suitVal == 1) {
@@ -30,7 +30,7 @@ public class Card {
 			this.suit = "HEARTS";
 		} else if (suitVal == 3) {
 			this.suit = "CLUBS";
-		} else {
+		} else if (suitVal == 4){
 			this.suit = "SPADES";
 		}
 
@@ -122,8 +122,10 @@ public class Card {
 	 */
 
 	@Override
-	public String toString() {
-		return this.value + " " + this.suit;
+	public String toString()
+	{
+		String handOut = getValue() + " of " + getSuit() + " ";
+		return handOut;
 
 	}
 

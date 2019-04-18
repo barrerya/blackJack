@@ -21,9 +21,14 @@ public class GroupOfCards
     private ArrayList <Card> cards;
     private int size;//the size of the grouping
     private int handVal;
+    private String handString = "";
     
     public GroupOfCards(int givenSize)
     {
+        cards = new ArrayList<>();
+        for (int x = 0 ; x < givenSize; x++) {
+            cards.add(new Card());
+        }
         handVal = 0;
     	size = givenSize;
     }
@@ -40,25 +45,31 @@ public class GroupOfCards
     
 
     public int getHandVal() {
-    	for (int x = 0 ; x < this.size; x++) {
+        handVal = 0;
+    	for (int x = 0 ; x < size; x++) {
     		handVal += cards.get(x).getIntVal();
     	}
 		return handVal;
 	}
+	public String getHandString()
+    {
+        handString = "";
+        for (int x = 0 ; x < size; x++) {
+            handString = (handString + cards.get(x).toString());
+        }
+
+        return handString;
+    }
 
 	/**
      * @return the size of the group of cards
      */
-    public int getSize() {
+    public int getSize()
+    {
         return size;
     }
 
-    /**
-     * @param givenSize the max size for the group of cards
-     */
-    public void setSize(int givenSize) {
-        size = givenSize;
-    }
+
     
     public void addCard() {
     	size++;

@@ -16,27 +16,21 @@ import java.util.Scanner;
 public class Game 
 {
 	//private final String gameName;//the title of the game
-    private ArrayList<Player> players = new ArrayList<Player>(); // the players of the game
-    static Scanner input = new Scanner(System.in);
-    private static Game myInstance = null;
-    
-    private Game()
+    private ArrayList<Player> players; // the players of the game
+    private Player user, dealer;
+    private String handString = "";
+    private boolean gameState = true;
+
+    public Game()
     {
         //gameName = givenName;
         players = new ArrayList();
+
     }
-    public static Game createGame() {
-		if (myInstance == null) {
-			myInstance = new Game();
-		}
-		return myInstance;
-	}
 
 
-    public ArrayList <Player> getPlayers() 
-    {
-        return players;
-    }
+
+
 
 
     public void setPlayers(ArrayList <Player> players)
@@ -49,23 +43,74 @@ public class Game
     }
 
 
-    public void play()
+    public void play(String playerName)
     {
-        String addPlayers = "";
-        while (!(addPlayers.equals("stop")))
-        {
-            System.out.println("What is the player's name?");
-            players.add(new Player(input.nextLine()));
-            System.out.println("Would you like to add another player? type 'stop' for no, type anything else to continue");
-            addPlayers = input.nextLine();
+        Scanner input = new Scanner(System.in);
+        user = new Player(playerName);
+        dealer = new Player("Dealer");
+        players.add(user);
+        players.add(dealer);
+        System.out.print("Players: ");
+        System.out.println(players.get(0).getPlayerID() + ", " + players.get(1).getPlayerID());
+        updateHandString();
 
-        }
-        System.out.println("Players: " );
+
+        do {
+            System.out.println("Your hand is: " + handString + " Its point value is: " + players.get(0).getHandValue());
+            System.out.println("Do you want to draw a card?");
+            String hit = input.nextLine();
+            if (hit.equalsIgnoreCase("yes")) {
+                players.get(0).hit();
+                updateHandString();
+
+            } else {
+
+                gameState = false;
+            }
+        } while (gameState);
+        dealerTurn();
+
+        declareWinner();
+
+
+
+
+
+
     }
-
+    public void dealerTurn()
+    {
+        while (players.get(1).getHandValue() < 16)
+        {
+            players.get(1).hit();
+        }
+    }
     public void declareWinner()
     {
-
+        if (players.get(0).getHandValue() > 21 && players.get(1).getHandValue() < 21)
+        {
+            System.out.println("You have lost");
+        }
+        else if (players.get(1).getHandValue() > 21 && players.get(0).getHandValue() < 21)
+        {
+            System.out.println("You have won");
+        }
+        else if (players.get(0).getHandValue() == 21)
+        {
+            System.out.println("You have won");
+        }
+        else if (players.get(1).getHandValue() > players.get(0).getHandValue())
+        {
+            System.out.println("Dealer wins");
+        }
+        else if (players.get(0).getHandValue() > players.get(1).getHandValue())
+        {
+            System.out.println("You have won");
+        }
+    }
+    public void updateHandString()
+    {
+       handString = players.get(0).getHand();
     }
    
     
