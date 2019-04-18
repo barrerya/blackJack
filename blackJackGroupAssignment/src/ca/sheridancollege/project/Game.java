@@ -43,6 +43,10 @@ public class Game
     {
         this.players = players;
     }
+    
+    public void addPlayer(String name) {
+    	players.add(new Player(name));
+    }
 
 
     public void play()
