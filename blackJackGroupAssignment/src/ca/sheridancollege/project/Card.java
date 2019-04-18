@@ -100,6 +100,20 @@ public class Card {
 		}
 	}
 
+	
+	
+	public String getValue() {
+		return value;
+	}
+
+	public String getSuit() {
+		return suit;
+	}
+
+	public int getIntVal() {
+		return intVal;
+	}
+
 	/**
 	 * Students should implement this method for their specific children classes
 	 * 

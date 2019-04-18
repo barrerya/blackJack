@@ -12,8 +12,8 @@ package ca.sheridancollege.project;
 public class Player 
 {
 	 public static String playerID; //the unique ID for this player
-	    GroupOfCards hand;
-	    int handValue;
+	    private GroupOfCards hand;
+	    private int handValue;
 	    
 	    public Player(String name)
 	    {
@@ -43,8 +43,12 @@ public class Player
 		public void setHand(GroupOfCards hand) {
 			this.hand = hand;
 		}
-		
-		
+
+
+		public int getHandValue() {
+			handValue = hand.getHandVal();
+			return handValue;
+		}
 
 
 		public void hit()
